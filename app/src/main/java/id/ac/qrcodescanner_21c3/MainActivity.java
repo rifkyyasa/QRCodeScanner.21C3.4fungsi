@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+
     @Override
     protected void onActivityResult (int requestCode,int resultCode,Intent data ){
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
@@ -63,7 +64,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } catch (android.content.ActivityNotFoundException ex) {
                     Toast.makeText(MainActivity.this, "no phone apk installed.", Toast.LENGTH_LONG);
                 }
-            }
+            }else if (Patterns.EMAIL_ADDRESS.matcher(result.getContents()).matches()) {
+                Intent intent = new Intent(Intent.ACTION_SEND, Uri.parse(result.getContents()));
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[] {"rifkyyasa97@gmail.com"});
+                intent.putExtra(Intent.EXTRA_CC, new String[] {"guntoroagun@gmail.com"});
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Fungsi Email");
+                intent.putExtra(Intent.EXTRA_TEXT, "M.Rifky Yasa Putra-TI.21.C.3-312110211");
+                try {
+                    startActivity(Intent.createChooser(intent, "Ingin Mengirim Email ?"));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    //do something else
+                }}
             else {
                 try {
                     //konversi datanya ke json
