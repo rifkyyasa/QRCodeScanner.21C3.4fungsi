@@ -57,10 +57,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else if (Patterns.EMAIL_ADDRESS.matcher(result.getContents()).matches()) {
                 Intent intent = new Intent(Intent.ACTION_SEND, Uri.parse(result.getContents()));
                 intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"raihanadzuhri1@gmail.com"});
-                intent.putExtra(Intent.EXTRA_CC, new String[]{"raihancahbekasi1@gmail.com"});
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"rifkyyasa97@gmail.com"});
+                intent.putExtra(Intent.EXTRA_CC, new String[]{"yasacahbekasi1@gmail.com"});
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Fungsi Email");
-                intent.putExtra(Intent.EXTRA_TEXT, "Raihan Adzuhri-TI.21.C.3-312110374");
+                intent.putExtra(Intent.EXTRA_TEXT, "M.Rifky Yasa Putra-TI.21.C.3-312110211");
                 try {
                     startActivity(Intent.createChooser(intent, "Ingin Mengirim Email ?"));
                 } catch (android.content.ActivityNotFoundException ex) {
